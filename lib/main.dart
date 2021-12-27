@@ -72,7 +72,18 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ListView.builder(
           itemCount: Recipe.samples.length,
           itemBuilder: (BuildContext context, int index) {
-            return Text(Recipe.samples[index].label);
+            Widget buildRecipeCard(Recipe recipe) {
+              return Card(
+                child: Column(
+                  children: <Widget>[
+                    Image(image: AssetImage(recipe.imageUrl)),
+                    Text(recipe.label),
+
+                  ],
+                ),
+              );
+            }
+            return buildRecipeCard(Recipe.samples[index]);
           },
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
